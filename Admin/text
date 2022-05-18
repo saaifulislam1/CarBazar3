@@ -1,0 +1,44 @@
+        <!-- <div class="form-group mb-3">
+                                        <label for="name">Blood Group :</label>
+                                        <select class="form-control demo-default" id="blood_group" name="bloodgroup">
+                                            <option value="">Select Blood Group</option>
+                                            <option value="A+" <?php if ($row['bloodgroup'] == "A+") {
+                                                                    echo "selected";
+                                                                } ?>>A+</option>
+                                            <option value="A-" <?php if ($row['bloodgroup'] == "A-") {
+                                                                    echo "selected";
+                                                                } ?>>A-</option>
+                                            <option value="B+" <?php if ($row['bloodgroup'] == "B+") {
+                                                                    echo "selected";
+                                                                } ?>>B+</option>
+                                            <option value="B-" <?php if ($row['bloodgroup'] == "B-") {
+                                                                    echo "selected";
+                                                                } ?>>B-</option>
+                                            <option value="O+" <?php if ($row['bloodgroup'] == "O+") {
+                                                                    echo "selected";
+                                                                } ?>>O+</option>
+                                            <option value="O-" <?php if ($row['bloodgroup'] == "O-") {
+                                                                    echo "selected";
+                                                                } ?>>O-</option>
+                                            <option value="AB+" <?php if ($row['bloodgroup'] == "AB+") {
+                                                                    echo "selected";
+                                                                } ?>>AB+</option>
+                                            <option value="AB-" <?php if ($row['bloodgroup'] == "AB-") {
+                                                                    echo "selected";
+                                                                } ?>>AB-</option>
+                                        </select>
+                                    </div> -->
+
+        <div class="mb-3">
+            <label for="gender">Gender :</label>
+            <select name="gender" id="gender" class="form-control" value="">
+                <option value="">Select Gender</option>
+                <option value="Male" <?php if ($row['gender'] == "Male") {
+                                            echo "selected";
+                                        } ?>>
+                    Male</option>
+                <option value="Fe-male" <?php if ($row['gender'] == "Fe-male") {
+                                            echo "selected";
+                                        } ?>>Fe-male</option>
+            </select>
+        </div>

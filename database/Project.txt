@@ -1,0 +1,43 @@
+CREATE DATABASE carbazar;
+
+
+CREATE TABLE ADMIN(
+   A_ID INT AUTO_INCREMENT PRIMARY KEY,
+   USERNAME VARCHAR(100),
+   PASSWORD VARCHAR(100)
+);
+
+CREATE TABLE REGISTER(
+  R_ID INT AUTO_INCREMENT PRIMARY KEY,
+  FULLNAME VARCHAR(100),
+  EMAIL VARCHAR(100) NOT NULL,
+  PASSWORD VARCHAR(100) NOT NULL
+);
+
+
+CREATE TABLE SellPost(
+    sell_id int AUTO_INCREMENT NOT NULL,
+    bloodgroup varchar(100) NOT NULL,
+    donorName varchar(100),
+    donor_email varchar(100),
+    district varchar(50),
+    area varchar(200),
+    lastdonationDate date,
+    contact_number varchar(20),
+    gender varchar(50),
+    PRIMARY KEY(donor_id, donor_email)
+);
+
+
+CREATE TABLE blood_request(
+    br_id int AUTO_INCREMENT NOT NULL,
+    bloodgroup varchar(100) NOT NULL,
+    fullName varchar(100),
+    email varchar(100)  NOT NULL UNIQUE,
+    district varchar(50),
+    area varchar(200),
+    contact_number varchar(20),
+    gender varchar(50),
+    comment varchar(200),
+    PRIMARY KEY(br_id)
+);
