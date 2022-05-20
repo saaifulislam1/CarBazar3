@@ -1,6 +1,6 @@
 <?php
 
-include('includes/config.php');
+include('config.php');
 
 session_start();
 

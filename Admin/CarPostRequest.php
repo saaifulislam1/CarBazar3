@@ -122,7 +122,7 @@ include('includes/config.php');
 
                         <?php
 
-                        $sql = "SELECT * FROM `product`";
+                        $sql = "SELECT * FROM `product2`";
                         $result = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_assoc($result)) { ?>
                             <tbody>
@@ -130,7 +130,7 @@ include('includes/config.php');
                                     <td><?php echo $row['ad']; ?></td>
                                     <td><?php echo $row['model']; ?></td>
                                     <td><?php echo $row['year']; ?></td>
-                                    <td><?php echo $row['year_used']; ?></td>
+                                    <td><?php echo $row['years_used']; ?></td>
                                     <td><?php echo $row['company']; ?></td>
                                     <td><?php echo $row['subbrand']; ?></td>
                                     <td><?php echo $row['cc']; ?></td>
@@ -140,10 +140,15 @@ include('includes/config.php');
                                     <td><?php echo $row['asking_price']; ?></td>
                                     <td><?php echo $row['negosiate']; ?></td>
                                     <td><?php echo $row['your_location']; ?></td>
-                                    <td><?php echo $row['image']; ?></td>
+                                    <!-- <td><?php echo $row['my_image']; ?></td> -->
+
+                                   <td>
+                                       <img src="../upload/<?php $row['my_image'] ?>" alt="">
+                                   </td> 
+
 
                                     <td>
-                                        <a class=" btn-primary btn" href="#?id=<?php echo $row['A_ID']; ?>">Approved</a>
+                                        <a class=" btn-primary btn" href="#?id=<?php echo $row['A_ID']; ?>">Approve <br> Post</a>
                                     </td>
 
                                     <!-- <td>
@@ -162,13 +167,7 @@ include('includes/config.php');
         </div>
         </main>
 
-        <footer class="py-4 bg-light mt-auto">
-            <div class="container-fluid px-4">
-                <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; Car Bazar Sourch 2021</div>
-                </div>
-            </div>
-        </footer>
+ 
     </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>

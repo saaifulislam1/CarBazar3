@@ -1,15 +1,14 @@
- <?php
-    $servername = "127.0.0.1:3308";
-    $username = "sajib";
-    $password = "1234";
-    $dbname = "carbazar";
+<?php
+$servername = "localhost";
+$username = "saiful";
+$password = "1234";
+$dbname = "carbazar";
 
-    // Create connection
-    $conn =mysqli_connect($servername, $username, $password, $dbname) or die("Database Conncetion faile");
-
-    // if ($conn->connect_errno) {
-    //     printf("Connect failed: %s\n", $conn->connect_error);
-    //     exit();
-    // }
-    // printf("Connected successfully");
-?>
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+} else {
+  echo ' <script> alert("db connected")
+  </script>';
+}

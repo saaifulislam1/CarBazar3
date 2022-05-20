@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +14,11 @@
 </head>
 
 <body>
+
+
+
     <div class="container text-center">
+
         <h1 class="py-4 bg-dark text-light rounded"><i class="fas fa-swatchbook"></i> Add product</h1>
         <div class="d-flex justify-content-center">
 
@@ -20,29 +26,34 @@
 
         </div>
 
-        <div class="form">
-            <form class="w-50" action="insert.php" method="Post">
-                <div class="py-2">
-                    <div class="input-group mb-2">
+        <div class="form ">
+            <form class="w-70  " action="insert.php" method="Post" enctype="multipart/form-data">
+                <div class="py-2">      
+                 <h5>Ad Title</h5>
+                    <div class="input-group mb-2 form-group">
+                  
+                     
                         <span class="input-group-text bg-warning" id="basic-addon1"><i class="fa-solid fa-id-badge"></i></span>
 
-                        <input id="ad" name="ad" type="text" autocomplete="off" placeholder="ad_title" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                        <input id="ad" name="ad" type="text" placeholder="ad_title" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
 
 
                 </div>
 
+<h5>Model</h5>
 
                 <div class="pt-2">
                     <div class="input-group mb-2">
                         <span class="input-group-text bg-warning" id="basic-addon1"><i class="fa-solid fa-book"></i></span>
-                        <input id="model" name="model" type="text" autocomplete="off" placeholder="model" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                        <input id="model" name="model" type="text" placeholder="model" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                 </div>
+                <h5>Buying Year</h5>
                 <div class="pt-2">
                     <div class="input-group mb-2">
                         <span class="input-group-text bg-warning" id="basic-addon1"><i class="fa-solid fa-book"></i></span>
-                        <input id="year" name="year" type="text" autocomplete="off" placeholder="year" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                        <input id="year" name="year" type="text" placeholder="year" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                 </div>
                 <!-- <div class="selectbox pt-4 pb-4">
@@ -53,93 +64,118 @@
 
                     </select>
                 </div> -->
+                <h5>Year Used ?</h5>
                 <div class="pt-2">
                     <div class="input-group mb-2">
-                        <span class="input-group-text bg-warning" id="basic-addon1"><i class="fa-solid fa-book"></i></span>
-                        <input id="year_used" name="year_used" type="text" autocomplete="off" placeholder="Year Used" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+
+                        <span class="input-group-text bg-warning" id="basic-addon1">
+                            <br>
+
+                            <i class="fa-solid fa-book"></i></span>
+
+                        <input  id="year_used" name="year_used" type="text" placeholder="Year Used" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                 </div>
                 <!-- <div class="pt-2">
                     <div class="input-group mb-2">
                         <span class="input-group-text bg-warning" id="basic-addon1"><i class="fa-solid fa-book"></i></span>
-                        <input id="vehicle_ran" name="vehicle_ran" type="text" autocomplete="off" placeholder="vehicle Ran For ? KM" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                        <input id="vehicle_ran" name="vehicle_ran" type="text"  placeholder="vehicle Ran For ? KM" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                 </div> -->
+                <h5>Company Name</h5>
                 <div class="pt-2">
                     <div class="input-group mb-2">
                         <span class="input-group-text bg-warning" id="basic-addon1"><i class="fa-solid fa-book"></i></span>
-                        <input id="company" name="company" type="text" autocomplete="off" placeholder="Name of the Company?" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                        <input id="company" name="company" type="text" placeholder="Name of the Company?" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                 </div>
+                <h5>Subbrand ?</h5>
                 <div class="pt-2">
                     <div class="input-group mb-2">
                         <span class="input-group-text bg-warning" id="basic-addon1"><i class="fa-solid fa-book"></i></span>
-                        <input id="subbrand" name="subbrand" type="text" autocomplete="off" placeholder="subbrand of the Company?" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                        <input id="subbrand" name="subbrand" type="text" placeholder="subbrand of the Company?" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                 </div>
+                <h5>Engine power in CC</h5>
                 <div class="pt-2">
                     <div class="input-group mb-2">
                         <span class="input-group-text bg-warning" id="basic-addon1"><i class="fa-solid fa-book"></i></span>
-                        <input id="cc" name="cc" type="text" autocomplete="off" placeholder="Vehicle CC?" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                        <input id="cc" name="cc" type="text" placeholder="Vehicle CC?" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                 </div>
+                <h5>Engine type</h5>
                 <div class="pt-2">
                     <div class="input-group mb-2">
                         <span class="input-group-text bg-warning" id="basic-addon1"><i class="fa-solid fa-book"></i></span>
-                        <input id="engine" name="engine" type="text" autocomplete="off" placeholder="Engine Type" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                        <input id="engine" name="engine" type="text" placeholder="Engine Type" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                 </div>
+                <h5>Tyre Type</h5>
                 <div class="pt-2">
                     <div class="input-group mb-2">
                         <span class="input-group-text bg-warning" id="basic-addon1"><i class="fa-solid fa-book"></i></span>
-                        <input id="tyre" name="tyre" type="text" autocomplete="off" placeholder="Tyre used " class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                        <input id="tyre" name="tyre" type="text" placeholder="Tyre used " class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                 </div>
+                <h5>License Plate Serial</h5>
                 <div class="pt-2">
                     <div class="input-group mb-2">
                         <span class="input-group-text bg-warning" id="basic-addon1"><i class="fa-solid fa-book"></i></span>
-                        <input id="license" name="license" type="text" autocomplete="off" placeholder="License Location" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                        <input id="license" name="license" type="text" placeholder="License Location" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                 </div>
-
+                <h5>Asking Price in ৳ </h5>
                 <div class="pt-2">
                     <div class="input-group mb-2">
                         <span class="input-group-text bg-warning" id="basic-addon1"><i class="fa-solid fa-book"></i></span>
-                        <input id="asking_price" name="asking_price" type="text" autocomplete="off" placeholder="Asking Price?" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                        <input id="asking_price" name="asking_price" type="text" placeholder="Asking Price?" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                 </div>
+                <h5>Buying time Price</h5>
                 <div class="pt-2">
                     <div class="input-group mb-2">
                         <span class="input-group-text bg-warning" id="basic-addon1"><i class="fa-solid fa-book"></i></span>
-                        <input id="original_price" name="original_price" type="text" autocomplete="off" placeholder="original_price" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                        <input id="original_price" name="original_price" type="text" placeholder="original_price" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                 </div>
+                <h5>Location</h5>
                 <div class="pt-2">
                     <div class="input-group mb-2">
                         <span class="input-group-text bg-warning" id="basic-addon1"><i class="fa-solid fa-book"></i></span>
-                        <input id="your_location" name="your_location" type="text" autocomplete="off" placeholder="your_location?" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                        <input id="your_location" name="your_location" type="text" placeholder="your_location?" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
                 </div>
-                <!-- <div class="selectbox pt-4 pb-7 mb-10">
-                    <select required id="Price_nego" name="price_nego" class="form-select form-select-sm" aria-label=".form-select-sm example">
-                        <option selected>Negotiable or non Negotiable ?</option>
-                        <option value="Negotiable">Negotiable</option>
-                        <option value="Non_Negotiable">Non Negotiable</option>
-
-                    </select>
-                </div> -->
-
+             <!-- should use in admin dashboard -->
                 <!-- <div class="pt-2">
                     <div class="input-group mb-2">
                         <span class="input-group-text bg-warning" id="basic-addon1"><i class="fa-solid fa-book"></i></span>
-                        <input name="user_raing" type="text" autocomplete="off" placeholder="Asking Price?" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
-                    </div>
-                </div> -->
-                <div class="pt-2">
+                        <input name="expert_rating" type="text" placeholder="Asking Price?" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                    </div> -->
+
+
+                    <!-- image input -->
+
+                    <h5>Contact NO</h5>
+
+                    <div class="pt-2">
                     <div class="input-group mb-2">
                         <span class="input-group-text bg-warning" id="basic-addon1"><i class="fa-solid fa-book"></i></span>
-                        <input name="asking_price" type="text" autocomplete="off" placeholder="Asking Price?" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
+                        <input id="Your_contact NO" name="contact_no" type="text" placeholder="contact_no" class="form-control" aria-label="Username" aria-describedby="basic-addon1">
                     </div>
+</div>
+
+                <h5>Upload Image</h5>
+   
+                    <div class="pt-2 ml-5">
+                    <div class="input-group mb-2">
+                        <span class="input-group-text bg-warning" id="basic-addon1"><i class="fa-solid fa-book"></i></span>
+                        <input id="image"  type="file" name="my_image"  class="form-control" >
+                    </div>
+                </div>
+             
+
+
+
                 </div>
                 <div class="py-4 pb-4">
                     <button class="btn btn-warning py-2 rounded" type="submit" name="submit" value="submit">Submit</button>
