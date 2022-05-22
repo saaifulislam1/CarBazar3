@@ -3,8 +3,8 @@ include('includes/config.php');
 session_start();
 
 
-$id = $_GET['id'];
-$sql = "SELECT * FROM product WHERE A_ID='$id'";
+$id = $_GET['product_id'];
+$sql = "SELECT * FROM product2 WHERE product_id='$id'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_array($result);
 
@@ -15,7 +15,7 @@ if (isset($_POST["submit"])) {
     $ad = mysqli_real_escape_string($conn, $_POST["ad"]);
     $model = mysqli_real_escape_string($conn, $_POST["model"]);
     $year = mysqli_real_escape_string($conn, $_POST["year"]);
-    $year_used = mysqli_real_escape_string($conn, $_POST["year_used"]);
+    $years_used = mysqli_real_escape_string($conn, $_POST["years_used"]);
     $company = mysqli_real_escape_string($conn, $_POST["company"]);
     $subbrand = mysqli_real_escape_string($conn, $_POST["subbrand"]);
     $cc  = mysqli_real_escape_string($conn, $_POST["cc"]);
@@ -25,15 +25,17 @@ if (isset($_POST["submit"])) {
     $asking_price = mysqli_real_escape_string($conn, $_POST["asking_price"]);
     $original_price = mysqli_real_escape_string($conn, $_POST["negosiate"]);
     $your_location = mysqli_real_escape_string($conn, $_POST["your_location"]);
+    $expert_rating = mysqli_real_escape_string($conn, $_POST["expert_rating"]);
     // $image = mysqli_real_escape_string($conn, $_POST["image"]);
 
-    $sql2 = "UPDATE product SET ad =' $ad', model = ' $model', year = ' $year', year_used ='$year_used', company = ' $company', subbrand = '$subbrand', cc = '$cc', engine = ' $engine', tyre = ' $tyre', license = ' $license', asking_price = '$asking_price ', negosiate = '$original_price', your_location = '$your_location' WHERE A_ID ='$id' ";
+    $sql2 = "UPDATE product2 SET ad =' $ad', model = ' $model', year = ' $year', years_used ='$years_used', company = ' $company', subbrand = '$subbrand', cc = '$cc', engine = ' $engine', tyre = ' $tyre', license = ' $license', asking_price = '$asking_price ', negosiate = '$original_price', your_location = '$your_location' , expert_rating='$expert_rating' WHERE product_id ='$id' ";
 
     if ($result2 = mysqli_query($conn, $sql2)) {
         echo "Data Update SUCCESSFULLY";
         header('Location:updatDelect.php');
     } else {
-        echo "Sorry! data not Updated";
+        echo "ERROR: Hush! Sorry $sql. "
+        . mysqli_error($conn);
     }
 }
 
@@ -218,6 +220,11 @@ if (isset($_POST["submit"])) {
                                     <div class="mb-3">
                                         <label for="exampleInput" class="form-label">your_location :</label>
                                         <input type="text" class="form-control" placeholder="your_location" id="" name="your_location" value="<?php echo $row["your_location"]; ?>">
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label for="exampleInput" class="form-label">Expert Rating</label>
+                                        <input type="text" class="form-control" placeholder="Expert Rating" id="" name="expert_rating" >
                                     </div>
 
 

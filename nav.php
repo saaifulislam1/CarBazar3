@@ -4,7 +4,7 @@ $result = mysqli_query($conn, $sql);
 while ($row = mysqli_fetch_assoc($result))
 ?>
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/nav.css">
 <header class="header">
 
     <div id="menu-btn" class="fas fa-bars"></div>
@@ -47,5 +47,7 @@ while ($row = mysqli_fetch_assoc($result))
         </div>
         <p> don't have an account <a href="Signup.php">create one</a> </p>
     </form>
+
+    <script src="js/script.js"></script>
 
 </div>

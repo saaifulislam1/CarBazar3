@@ -113,6 +113,7 @@
                     <table class="table table-striped table-bordered ">
                         <thead>
                             <tr>
+                            <th>product ID  </th>
                                 <th>Ad_Title</th>
                                 <th>Model</th>
                                 <th>Year</th>
@@ -126,6 +127,7 @@
                                 <th>Asking Price</th>
                                 <th>Original_Price</th>
                                 <th>Your_Location</th>
+                                <th>Expert rating</th>
                                 <th>Image</th>
 
                             </tr>
@@ -133,15 +135,16 @@
 
                         <?php
 
-                        $sql = "SELECT * FROM `product`";
+                        $sql = "SELECT * FROM `product2`";
                         $result = mysqli_query($conn, $sql);
                         while ($row = mysqli_fetch_assoc($result)) { ?>
                             <tbody>
                                 <tr>
+                                    <td><?php echo $row['product_id']; ?></td>
                                     <td><?php echo $row['ad']; ?></td>
                                     <td><?php echo $row['model']; ?></td>
                                     <td><?php echo $row['year']; ?></td>
-                                    <td><?php echo $row['year_used']; ?></td>
+                                    <td><?php echo $row['years_used']; ?></td>
                                     <td><?php echo $row['company']; ?></td>
                                     <td><?php echo $row['subbrand']; ?></td>
                                     <td><?php echo $row['cc']; ?></td>
@@ -151,14 +154,17 @@
                                     <td><?php echo $row['asking_price']; ?></td>
                                     <td><?php echo $row['negosiate']; ?></td>
                                     <td><?php echo $row['your_location']; ?></td>
+                                    <td><?php echo $row['expert_rating']; ?></td>
+
                                     <td><?php echo $row['image']; ?></td>
 
+
                                     <td>
-                                        <a class=" btn-primary btn" href="update.php?id=<?php echo $row['A_ID']; ?>">Update</a>
+                                        <a class=" btn-primary btn" href="update.php?product_id=<?php echo $row['product_id']; ?>">Update</a>
                                     </td>
 
                                     <td>
-                                        <a id="delete" class="btn-danger btn" href="delete.php?id=<?php echo $row['A_ID']; ?>">Delete</a>
+                                        <a id="delete" class="btn-danger btn" href="delete.php?product_id=<?php echo $row['product_id']; ?>">Delete</a>
                                     </td>
 
                                 </tr>

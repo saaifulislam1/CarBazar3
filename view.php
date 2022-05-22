@@ -5,103 +5,97 @@
 <head>
     <title>View</title>
     <style>
-        /* body {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			flex-wrap: wrap;
-			min-height: 100vh;
-		}
-		.alb {
-			width: 200px;
-			height: 200px;
-			padding: 5px;
-		}
-		.alb img {
-			width: 100%;
-			height: 100%;
-		}
-		a {
-			text-decoration: none;
-			color: black;
-		} */
+      
 
-        .product_container{
-            display: flex;
-            padding-top:50px ;
-        }
+        .product_container {
+        display: flex;
+        width: 80%;
+        align-items: flex-start;
+        flex-wrap: wrap;
 
-        .single_product {
-            background-color: #DBDFFD;
-            width: 260px;
-            padding: 20px ;
-            margin: 20px;
+        padding-top: 20px;
 
 
-           
-        }
+    }
 
-        .thumbnil {
-            width: 250px;
-            height: 40%;
-        }
+    .single_product {
+        background-color: white;
+        width: 30%;
+        padding: 20px;
+        margin: 20px;
+        box-shadow: black 1px 1px 7px;
+        border-radius: 4%;
+        align-self: auto;
+        
+
+
+
+
+
+    }
+
+
+
+    .thumbnil {
+        width: 100%;
+        height: 40%;
+        object-fit: cover;
+        border-bottom: 1px solid black;
+    }
+   
+
+    .buy_btn {
+        background: #f9d806;
+        padding: 10px 15px;
+
+        border-radius: 10px;
+        text-decoration: none;
+        color: #423d7d;
+        width: 10%;
+        font-weight: bold;
+        font-family: sans-serif;
+
+
+    }
+    .rating{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    body {
+        width: 100%;
+       
+    }
     </style>
 </head>
 
 <body>
-    <!-- <a href="index.php">&#8592;</a>
-     <?php
+
+<div class="product_container">
+        <?php
         $sql = "SELECT * FROM product2 ";
         $res = mysqli_query($conn,  $sql);
 
         if (mysqli_num_rows($res) > 0) {
-            while ($images = mysqli_fetch_assoc($res)) {   ?>
-              
-             
-             <div class="alb">
-             	<img src="upload/<?= $images['image'] ?>">
-             </div>
+            while ($row = mysqli_fetch_assoc($res)) {   ?>                
+                    <div class="single_product">
+                        <img class="thumbnil" src="upload/<?= $row['image'] ?>" alt="">
+                        <h3><?php  echo  $row['ad'] ?></h3>
+                        <p><?php  echo  $row['asking_price'] ?></p>
+                        <br>
+                        
+                        <a class="buy_btn" href="#">Buy Now</a>
+                        <div class="rating">
+                            <h4>Expert Rating:</h4>
+                            <h3><?php  echo  $row['expert_rating'] ?><i class="fa-solid fa-star"></i></h3>
 
-            
-          		
-    <?php }
-        } ?> -->
+                        </div>
 
-<nav>
-    <?php include ('nav.php') ?>
-</nav>
-    <div class="product_container">
-        <div class="single_product">
-            <img class="thumbnil" src="car1.jpg" alt="">
-            <h3>Title</h3>
-            <p>Price</p>
-            <button>Buy Now</button>
-
-        </div>
-
-        <div class="single_product">
-            <img class="thumbnil" src="car1.jpg" alt="">
-            <h3>Title</h3>
-            <p>Price</p>
-            <button>Buy Now</button>
-
-        </div>
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                    </div>
+        <?php }
+        } ?>
+    </div>  
+<script src="https://kit.fontawesome.com/2569c15ff0.js" crossorigin="anonymous"></script>
 
 </body>
 
