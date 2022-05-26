@@ -51,10 +51,7 @@ include('includes/config.php');
                             Dashboard
                         </a>
 
-                        <a class="nav-link" href="viewproduct.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            View Total Post History
-                        </a>
+                     
 
                         <a class="nav-link" href="CarPostRequest.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>

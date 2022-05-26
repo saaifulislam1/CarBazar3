@@ -1,5 +1,31 @@
 <?php
     $id = $_GET['id'];
+    $conn=new PDO('mysql:host=localhost:3306;dbname=sadblog;','root','');
+            $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+            //database code
+            $sqlquerystring= "SELECT * FROM blogtable";
+            $returnobj=$conn->query($sqlquerystring);
+   
+
+
+    $data=$returnobj->fetchAll();
+                foreach($data AS $row){
+                    //<a href="javascript:void();" class="update-btn" style="background-color:green">Update</a>
+                    //<a href="javascript:void();" class="delete-btn" style="background-color:red">Delete</a>
+                   
+                
+                    
+                        
+                        
+                        $title=$row['title'];
+                        $category=$row['category'];
+                        $content=$row['content'];
+                        
+                      
+                    
+                    break;
+                    
+                }
 ?>
 
 <!DOCTYPE html>
@@ -107,13 +133,13 @@
 <input type="hidden" name="id" value="<?php echo $id; ?>">
 
 
-     <?php echo $id ?>
+   
     <div class="column">
     <div class="ui raised segment">
       <a class="ui red label">Title</a>
       <div class="b2"> 
       
-      <input type="text" name="title" id="title" placeholder="Enter post title" size="50">
+      <input type="text" name="title" id="title" placeholder="Enter post title" size="50" value=<?php echo $title   ?>>
       </div>
       <p></p>
       
@@ -121,14 +147,14 @@
       <a class="ui blue label">Category</a> 
       <div class="b2">
       
-      <input id="category" name="category" type="text" placeholder="Enter post category" size="50">
+      <input id="category" name="category" type="text" placeholder="Enter post category" size="50" value=<?php echo $category   ?>>
       <p></p>
       </div>
       
       <a class="ui orange label">Write Here</a> 
       <div class="b2">
       
-      <textarea name="content" id="content" placeholder="Write your post here..........." rows="5" cols="50"></textarea>
+      <textarea name="content" id="content" placeholder="Write your post here..........." rows="5" cols="50"> <?php echo $content; ?> </textarea>
       </div>
       <p></p>
       <a class="ui blue label">Image</a> 
@@ -138,7 +164,7 @@
       <p></p>
       </div>
       <div class="b1">
-      <button class="ui red button" id="addPost" name="addPost" type="submit">Update</button>
+      <button class="ui red button" id="addPost" name="addPost" type="submit" >Update</button>
       </div>
     </form>
     </div>

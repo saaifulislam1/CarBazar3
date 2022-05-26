@@ -60,10 +60,7 @@ echo $_SESSION["user_id"];
                             Dashboard
                         </a>
 
-                        <a class="nav-link" href="viewproduct.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            View Total Post History
-                        </a>
+                     
 
                         <a class="nav-link" href="CarPostRequest.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
@@ -84,7 +81,7 @@ echo $_SESSION["user_id"];
                                 <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                     <nav class="sb-sidenav-menu-nested nav">
                                         <a class="nav-link" href="#">Admin Post Cars</a>
-                                        <a class="nav-link" href="updatDelect.html">Edit and remove Post</a>
+                                        <a class="nav-link" href="updatDelect.php">Edit and remove Post</a>
                                     </nav>
                                 </div>
                             </nav>
@@ -112,7 +109,7 @@ echo $_SESSION["user_id"];
                             <div class="card bg-primary text-white mb-4">
                                 <div class="card-body">Total Post</div>
                                 <?php
-                                $sql = "SELECT * FROM `product`";;
+                                $sql = "SELECT * FROM `product2`";;
                                 $result = mysqli_query($conn, $sql);
                                 if ($usercar = mysqli_num_rows($result)) {
                                     echo '<h4 style="text-align:center; class="mb_0" >' . $usercar . '</h4>';
@@ -125,21 +122,12 @@ echo $_SESSION["user_id"];
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card bg-warning text-white mb-4">
-                                <div class="card-body">Total Requests</div>
-                                <h3 style="text-align: center;">23</h3>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="#">View Details</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
+
                         <div class="col-xl-3 col-md-6">
                             <div class="card bg-success text-white mb-4">
                                 <div class="card-body">Approved Requests</div>
                                 <?php
-                                $sql = "SELECT * FROM `product`";;
+                                $sql = "SELECT * FROM `approved_product`";;
                                 $result = mysqli_query($conn, $sql);
                                 if ($usercar = mysqli_num_rows($result)) {
                                     echo '<h4 style="text-align:center; class="mb_0" >' . $usercar . '</h4>';
@@ -157,7 +145,7 @@ echo $_SESSION["user_id"];
 
 
 
-                    <div class="row my-5">
+                    <!-- <div class="row my-5">
                         <h3 class="fs-4 mb-3">Post People Information</h3>
                         <div class="col">
                             <table class="table bg-white rounded shadow-sm  table-hover">
@@ -187,7 +175,7 @@ echo $_SESSION["user_id"];
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    </div> 
             </main>
 
 

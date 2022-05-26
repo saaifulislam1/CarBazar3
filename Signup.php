@@ -9,56 +9,41 @@ error_reporting(0);
 
 //sigup section
 
-if (isset($_POST["signup"])) {
-  //getting the data
-  $full_name = mysqli_real_escape_string($conn, $_POST["signup_Full_Name"]);
-  $email = mysqli_real_escape_string($conn, $_POST["signup_Email"]);
-  $password = mysqli_real_escape_string($conn, $_POST["signup_Password"]);
-  $cpassword = mysqli_real_escape_string($conn, $_POST["signup_cPassword"]);
 
-  //check the email 
-  $check_email = mysqli_num_rows(mysqli_query($conn, "SELECT email FROM  register WHERE email='$email'"));
+if (isset($_POST['submit'])) {
 
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $pass = mysqli_real_escape_string($conn, md5($_POST['password']));
+    $cpass = mysqli_real_escape_string($conn, md5($_POST['cpassword']));
+    $image = $_FILES['image']['name'];
+    $image_size = $_FILES['image']['size'];
+    $image_tmp_name = $_FILES['image']['tmp_name'];
+    $image_folder = 'uploaded_img/' . $image;
 
-  if ($password  !== $cpassword) {
-    echo "<script>alert('Password did not Match');</script>";
-  } elseif ($check_email > 0) {
-    echo "<script>alert('Email Already Exists In Database.');</script>";
-  } else {
-    $sql = "INSERT INTO register(FULLNAME, EMAIL, PASSWORD) VALUES ('$full_name','$email','$password')";
-    $result = mysqli_query($conn, $sql);
-    if ($result) {
-      $_POST["signup_Full_Name"] = "";
-      $_POST["signup_Email"] = "";
-      $_POST["signup_Password"] = "";
-      $_POST["signup_cPassword"] = "";
-      echo "<script>alert('User SignUp Successfully ');</script>";
+    $select = mysqli_query($conn, "SELECT * FROM `user_form` WHERE email = '$email' AND password = '$pass'") or die('query failed');
+
+    if (mysqli_num_rows($select) > 0) {
+        $message[] = 'user already exist';
     } else {
-      echo "<script>alert('User SignUp Failed');</script>";
+        if ($pass != $cpass) {
+            $message[] = 'confirm password not matched!';
+        } elseif ($image_size > 20000000) {
+            $message[] = 'image size is too large!';
+        } else {
+            $insert = mysqli_query($conn, "INSERT INTO `user_form`(name, email, password, image) VALUES('$name', '$email', '$pass', '$image')") or die('query failed');
+
+            if ($insert) {
+                move_uploaded_file($image_tmp_name, $image_folder);
+                $message[] = 'registered successfully!';
+                header('location:home.php');
+            } else {
+                $message[] = 'registeration failed!';
+            }
+        }
     }
-  }
 }
 
-
-
-// login section
-if (isset($_POST["login"])) {
-
-  //getting the data
-  $email = mysqli_real_escape_string($conn, $_POST["email"]);
-  $password = mysqli_real_escape_string($conn, $_POST["password"]);
-
-
-  //check the email
-  $check_email = mysqli_query($conn, "SELECT R_ID FROM register WHERE email='$email' &&  password='$password'");
-  if (mysqli_num_rows($check_email) > 0) {
-    $row = mysqli_fetch_assoc($check_email);
-    $_SESSION["user_id"] = $row["R_ID"];
-    header("Location: addProduct.php");
-  } else {
-    echo "<script>alert('Login details is Incorrect. Please try again');</script>";
-  }
-}
 
 ?>
 
@@ -67,145 +52,126 @@ if (isset($_POST["login"])) {
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CarBazar</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarBazar</title>
 
-  <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
-  <!-- font awesome cdn link  -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-  <!-- custom css file link  -->
-  <link rel="stylesheet" href="css/style.css">
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
 
-  <header class="header">
+    <header class="header">
 
-    <div id="menu-btn" class="fas fa-bars"></div>
+        <div id="menu-btn" class="fas fa-bars"></div>
 
-    <a href="#" class="logo"> <span>CAR</span>BAZAR</a>
+        <a href="#" class="logo"> <span>CAR</span>BAZAR</a>
 
-    <nav class="navbar">
+        <nav class="navbar">
       <a href="index.php" class="active">Home</a>
-      <a href="#buycar">Buy Car</a>
+      <a href="allproducts.php">All vehicles</a>
       <a href="AddProduct.php">Sell Car post</a>
-      <a href="#blog">Blog</a>
-      <a href="#used car">Used Car</a>
-      <a href="#review">Review</a>
-      <a href="#review">Search</a>
+      <a href="blog/dashboard.php">Blog</a>
+      
+      
+      <a href="Searchcode/index.html">Search</a>
     </nav>
 
-    <div id="login-btn">
-      <button class="btn">login</button>
-      <i class="far fa-user"></i>
-    </div>
+        <div id="login-btn">
+            <button class="btn">login</button>
+            <i class="far fa-user"></i>
+        </div>
 
-  </header>
+    </header>
 
-  <div class="login-form-container">
+    <!-- <section class="home" id="home">
 
-    <span id="close-login-form" class="fas fa-times"></span>
+        <h3 data-speed="-2" class="home-parallax">find your car</h3>
 
-    <form action="#" method="post" class="sign-in-form">
+        <img data-speed="5" class="home-parallax" src="image/home-img.png" alt="">
 
-      <h3 class="title">Sign in</h3>
-      <input type="email" placeholder="Email Address" name="email" class="box" required />
-      <input type="password" placeholder="Password" name="password" class="box" required />
+        <a data-speed="7" href="#" class="btn home-parallax">explore cars</a>
 
-      <p> forget your password <a href="#">click here</a> </p>
-      <input type="submit" value="Login" name="login" class="btn">
-      <p>or login with</p>
-      <div class="buttons">
-        <a href="#" class="btn"> google </a>
-        <a href="#" class="btn"> facebook </a>
-      </div>
-      <p> don't have an account <a href="Signup.php">create one</a> </p>
-    </form>
-
-  </div>
-
-  <section class="home" id="home">
-
-    <h3 data-speed="-2" class="home-parallax">find your car</h3>
-
-    <img data-speed="5" class="home-parallax" src="image/home-img.png" alt="">
-
-    <a data-speed="7" href="#" class="btn home-parallax">explore cars</a>
-
-  </section>
+    </section> -->
 
 
-  <hr>
-  <hr>
-
-  <section class="contact" id="contact">
-    <div class="row">
-      <form action="#" class="sign-up-form" method="post">
-        <h3 class="title">User Sign up</h3>
-
-        <input type="text" placeholder="Full Name" name="signup_Full_Name" class="box value=" <?php echo $_POST["signup_Full_Name"]; ?>" required />
+    <hr>
+    <hr>
 
 
-        <input type="email" placeholder="Email Address" name="signup_Email" class="box value=" <?php echo $_POST["signup_Email"]; ?>" required />
+    <section class="contact" id="contact">
+        <div class="row">
+            <form action="#" class="sign-up-form" method="post" enctype="multipart/form-data">
+                <h3 class="title">User Sign up</h3>
+                <?php
+                if (isset($message)) {
+                    foreach ($message as $message) {
+                        echo '<div class="message">' . $message . '</div>';
+                    }
+                }
+                ?>
+                <input type="text" name="name" placeholder="enter username" class="box value=" required>
+                <input type="email" name="email" placeholder="enter email" class="box value=" required>
+                <input type="password" name="password" placeholder="enter password" class="box value=" required>
+                <input type="password" name="cpassword" placeholder="confirm password" class="box value=" required>
+                <input type="file" name="image" class="box" accept="image/jpg, image/jpeg, image/png">
+                <input type="submit" name="submit" value="register now" class="btn">
+                <p>already have an account? <a href="login.php">login now</a></p>
+            </form>
 
 
-        <input type="password" placeholder="Password" name="signup_Password" class="box value=" <?php echo $_POST["signup_Password"]; ?>" required />
 
-        <input type="password" placeholder="Confirm Password" name="signup_cPassword" class="box value=" <?php echo $_POST["signup_cPassword"]; ?>" required />
+        </div>
 
-
-        <input type="submit" class="btn" value="Signup" name="signup" />
-      </form>
-
-    </div>
-
-  </section>
+    </section>
 
 
 
 
 
-  <section class="footer" id="footer">
+    <section class="footer" id="footer">
 
-    <div class="box-container">
+        <div class="box-container">
 
-      <div class="box">
-        <h3>quick links</h3>
-        <a href="#"> <i class="fas fa-arrow-right"></i> Home </a>
-        <a href="#"> <i class="fas fa-arrow-right"></i> Buy Car </a>
-        <a href="#"> <i class="fas fa-arrow-right"></i> Sell Car post </a>
-        <a href="#"> <i class="fas fa-arrow-right"></i> Blog </a>
-        <a href="#"> <i class="fas fa-arrow-right"></i> Reviews </a>
-        <a href="#"> <i class="fas fa-arrow-right"></i> Used Car </a>
-        <a href="#"> <i class="fas fa-arrow-right"></i>Search</a>
-      </div>
-
-
-      <div class="box">
-        <h3>contact info</h3>
-        <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
-        <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
-        <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
-
-      </div>
-
-    </div>
-
-    <div class="credit"> created by CarBazar web designer | all rights reserved </div>
-
-  </section>
+            <div class="box">
+                <h3>quick links</h3>
+                <a href="#"> <i class="fas fa-arrow-right"></i> Home </a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> Buy Car </a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> Sell Car post </a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> Blog </a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> Reviews </a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> Used Car </a>
+                <a href="#"> <i class="fas fa-arrow-right"></i>Search</a>
+            </div>
 
 
+            <div class="box">
+                <h3>contact info</h3>
+                <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
+                <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+                <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
+
+            </div>
+
+        </div>
+
+        <div class="credit"> created by CarBazar web designer | all rights reserved </div>
+
+    </section>
 
 
-  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
-  <script src="js/script.js"></script>
+
+    <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
 
 </body>
 

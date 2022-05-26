@@ -2,7 +2,7 @@
 include('includes/config.php');
 session_start();
 
-// update admin
+
 $id = $_GET['product_id'];
 $sql = "SELECT * FROM product2 WHERE product_id='$id'";
 $result = mysqli_query($conn, $sql);
@@ -15,7 +15,7 @@ if (isset($_POST["submit"])) {
     $ad = mysqli_real_escape_string($conn, $_POST["ad"]);
     $model = mysqli_real_escape_string($conn, $_POST["model"]);
     $year = mysqli_real_escape_string($conn, $_POST["year"]);
-    $years_used = mysqli_real_escape_string($conn, $_POST["year_used"]);
+    $years_used = mysqli_real_escape_string($conn, $_POST["years_used"]);
     $company = mysqli_real_escape_string($conn, $_POST["company"]);
     $subbrand = mysqli_real_escape_string($conn, $_POST["subbrand"]);
     $cc  = mysqli_real_escape_string($conn, $_POST["cc"]);
@@ -170,7 +170,7 @@ if (isset($_POST["submit"])) {
 
                                     <div class="mb-3">
                                         <label for="exampleInput" class="form-label">Year_used * :</label>
-                                        <input type="text" class="form-control" placeholder="Year Used" id="" name="year_used" value="<?php echo $row["years_used"]; ?>">
+                                        <input type="text" class="form-control" placeholder="Year Used" id="" name=year_used" value="<?php echo $row["year_used"]; ?>">
                                     </div>
 
                                     <div class="mb-3">
@@ -224,7 +224,7 @@ if (isset($_POST["submit"])) {
 
                                     <div class="mb-3">
                                         <label for="exampleInput" class="form-label">Expert Rating</label>
-                                        <input type="text" class="form-control" placeholder="Expert Rating" id="" name="expert_rating" value="<?php echo $row["expert_rating"]; ?>" >
+                                        <input type="text" class="form-control" placeholder="Expert Rating" id="" name="expert_rating" >
                                     </div>
 
 

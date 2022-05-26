@@ -10,7 +10,7 @@
 
 
 
-	mysqli_query( $connect, "DELETE FROM blog WHERE id=$id" )
+	mysqli_query( $connect, "DELETE FROM blogtable WHERE id=$id" )
 
 		or die("Can not execute query");
 
@@ -21,3 +21,5 @@
 
 
 	//echo "<p><a href=read.php>READ all records</a>";
+
+?>

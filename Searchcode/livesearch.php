@@ -1,6 +1,6 @@
 <?php
 
-include("../config.php");
+include("config.php");
 
 if (isset($_POST['input'])) {
 
@@ -32,7 +32,7 @@ if (isset($_POST['input'])) {
 
                     $model = $row['model'];
                     $year = $row['year'];
-                    $company = $row['company'];
+                   $company = $row['company'];
                     $cc = $row['cc'];
                     $engine = $row['engine'];
                     $askingPrice = $row['asking_price'];

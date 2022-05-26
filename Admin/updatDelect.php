@@ -12,7 +12,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Update & Delect</title>
+    <title>Update & Delete </title>
 
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <link href="css/styles.css" rel="stylesheet" />
@@ -57,10 +57,7 @@
                             Dashboard
                         </a>
 
-                        <a class="nav-link" href="ViewDonorHistory.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            View Total Post History
-                        </a>
+  
 
                         <a class="nav-link" href="CarPostRequest.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>

@@ -1,6 +1,7 @@
 <?php
 	// Defining Constants
-	define( 'HOST', '127.0.0.1:3308' );
-	define( 'DB', ' carbazar' );
-	define( 'USER', 'sajib' );
+	define( 'HOST', 'localhost' );
+	define( 'DB', 'carbazar' );
+	define( 'USER', 'saiful' );
 	define( 'PASS', '1234' );
+?>

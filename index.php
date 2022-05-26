@@ -2,30 +2,10 @@
 
 include('config.php');
 
-
 session_start();
 
 error_reporting(0);
 
-// login section
-if (isset($_POST["login"])) {
-
-    //getting the data
-    $email = mysqli_real_escape_string($conn, $_POST["email"]);
-    $password = mysqli_real_escape_string($conn, $_POST["password"]);
-
-
-    //check the email
-    $check_email = mysqli_query($conn, "SELECT R_ID FROM register WHERE email='$email' &&  password='$password'");
-    if (mysqli_num_rows($check_email) > 0) {
-        $row = mysqli_fetch_assoc($check_email);
-        $_SESSION["user_id"] = $row["R_ID"];
-       echo "<script>alert('Logged In Successfully');</script>";
-        header("Location: Addproduct.php");
-    } else {
-        echo "<script>alert('Login details is Incorrect. Please try again');</script>";
-    }
-}
 
 //subscribe code
 
@@ -67,26 +47,70 @@ if (isset($_POST["subscribe"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CarBazar</title>
 
-  
-<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
-<!-- font awesome cdn link  -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="css/style.css">
-    
 
 </head>
 
 <body>
 
-<?php
-include 'nav.php';
+  
 
-?>
+     <header class="header">
+
+        <div id="menu-btn" class="fas fa-bars"></div>
+
+        <a href="index.php" class="logo"> <span>CAR</span>BAZAR</a>
+
+        <nav class="navbar">
+      <a href="index.php" class="active">Home</a>
+      <a href="allproducts.php">All vehicles</a>
+      <a href="AddProduct.php">Sell Car post</a>
+      <a href="blog/dashboard.php">Blog</a>
+      
+      
+      <a href="Searchcode/index.html">Search</a>
+    </nav>
+
+        <div id="login-btn">
+          
+            <!-- <button class="btn">login</button> -->
+            <button class="btn"><a href="login.php">Login</a></button>
+            <i class="far fa-user"></i>
+        </div>
+
+    </header>
+
+   
 
 
+    <!-- 
+    <div class="login-form-container">
+
+        <span id="close-login-form" class="fas fa-times"></span>
+
+        <form action="" method="post" class="sign-in-form">
+
+            <h3 class="title">Sign in</h3>
+            <input type="email" placeholder="Email Address" name="email" class="box" />
+            <input type="password" placeholder="Password" name="password" class="box" />
+
+            <p> forget your password <a href="#">click here</a> </p>
+            <input type="submit" value="login" name="login" class="btn">
+            <p>or login with</p>
+            <div class="buttons">
+                <a href="#" class="btn"> google </a>
+                <a href="#" class="btn"> facebook </a>
+            </div>
+            <p> don't have an account <a href="Signup.php">create one</a> </p>
+        </form>
+
+    </div> -->
 
     <section class="home" id="home">
 
@@ -94,7 +118,7 @@ include 'nav.php';
 
         <img data-speed="5" class="home-parallax" src="image/home-img.png" alt="">
 
-        <a data-speed="7" href="#" class="btn home-parallax">explore cars</a>
+        <a data-speed="7" href="allproducts.php" class="btn home-parallax">explore cars</a>
 
     </section>
 
@@ -104,7 +128,7 @@ include 'nav.php';
             <i class="fas fa-car"></i>
             <div class="content">
                 <?php
-                $sql = "SELECT * FROM `product`";
+                $sql = "SELECT * FROM `product2`";
                 $result = mysqli_query($conn, $sql);
                 if ($usercar = mysqli_num_rows($result)) {
                     echo '<h3 class="mb_0" >' . $usercar . '</h3>';
@@ -191,6 +215,8 @@ include 'nav.php';
         <div class="swiper featured-slider">
 
             <div class="swiper-wrapper">
+
+
 
                 <div class="swiper-slide box">
                     <img src="image/car-1.png" alt="">
@@ -329,8 +355,21 @@ include 'nav.php';
 
 
         <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-
-        <script src="js/script.js"></script>
+<!-- 
+        <script src="js/script.js"></script> -->
+        <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/628711e0b0d10b6f3e73261e/1g3fprmgb';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
 
 </body>
 

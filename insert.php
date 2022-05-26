@@ -17,6 +17,8 @@ $asking_price = $_REQUEST['asking_price'];
 $original_price = $_REQUEST['original_price'];
 $your_location = $_REQUEST['your_location'];
 $contact_no = $_REQUEST['contact_no'];
+$catagory=$_REQUEST['catagory'];
+$vehicle_condition=$_REQUEST['vehicle_status'];
 
 
 // code for image upload starts here:
@@ -71,13 +73,13 @@ $contact_no = $_REQUEST['contact_no'];
 
 
 $sql = "INSERT INTO product2  (ad , model , year, years_used, company, subbrand, cc, engine, tyre,
- license, asking_price, negosiate, your_location,image , contact_no) 
+ license, asking_price, negosiate, your_location,image , contact_no, catagory, vehicle_condition) 
  VALUES ('$ad', '$model', '$year','$year_used', '$company', '$subbrand', '$cc', '$engine', 
- '$tyre', '$license','$asking_price', '$original_price', '$your_location','$new_img_name', '$contact_no' )";
+ '$tyre', '$license','$asking_price', '$original_price', '$your_location','$new_img_name', '$contact_no', '$catagory', '$vehicle_condition' )";
 
 
 if (mysqli_query($conn, $sql)) {
-    echo "Data inserted";
+    header('location:Allproducts.php');
     // echo "<script>alert('User Post ADD Successfully ');</script>";
     // header("Location: addProduct.php");
 } else {

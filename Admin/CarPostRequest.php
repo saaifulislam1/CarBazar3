@@ -51,10 +51,7 @@ include('includes/config.php');
                             Dashboard
                         </a>
 
-                        <a class="nav-link" href="viewproduct.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            View Total Post History
-                        </a>
+                       
 
                         <a class="nav-link" href="CarPostRequest.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
@@ -148,7 +145,13 @@ include('includes/config.php');
 
 
                                     <td>
-                                        <a class=" btn-primary btn" href="#?id=<?php echo $row['A_ID']; ?>">Approve <br> Post</a>
+                                        
+
+                                <a class="btn btn-primary" href="approve.php?product_id=<?php echo $row['product_id']; ?>">Approve</a>
+
+
+         
+                                        
                                     </td>
 
                                     <!-- <td>
